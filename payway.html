@@ -66,7 +66,45 @@
     }
 
     @media (max-width: 900px) {
-      .card { grid-template-columns: 1fr; max-height: none; }
+      .card { 
+        grid-template-columns: 1fr; 
+        max-height: none; 
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      .left-panel {
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .right-panel {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 16px;
+      }
+      .card {
+        border-radius: 8px;
+      }
+      .quick-amounts {
+        gap: 6px;
+      }
+      .quick-btn {
+        padding: 8px;
+        font-size: 13px;
+      }
+      .amount-input {
+        font-size: 28px;
+      }
+      .khqr-card {
+        width: 100%;
+        max-width: 260px;
+      }
+      .qr-code {
+        width: 160px;
+        height: 160px;
+      }
     }
 
     /* Left Panel */
