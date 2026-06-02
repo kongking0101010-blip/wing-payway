@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wing PayWay</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
@@ -16,17 +17,12 @@
       font-family: 'Inter', sans-serif;
       background: #f8fafc;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
     .header {
-      padding: 16px 32px;
+      padding: 1rem 2rem;
       background: white;
       border-bottom: 1px solid #e2e8f0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
     }
 
     .logo {
@@ -46,102 +42,65 @@
       color: #1f2937;
     }
 
-    .container {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
+    .payment-container {
+      padding: 1.5rem 1rem;
+      min-height: calc(100vh - 64px);
     }
 
-    .card {
-      display: grid;
-      grid-template-columns: 360px 340px;
+    .payment-card {
       background: white;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
       border: 1px solid #e5e7eb;
-      max-height: 560px;
-      width: 100%;
+      overflow: hidden;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
-    @media (max-width: 900px) {
-      .card { 
-        grid-template-columns: 1fr; 
-        max-height: none; 
-        width: 100%;
-      }
-      .left-panel, .right-panel {
-        width: 100%;
+    .left-section {
+      padding: 2rem;
+      background: #fafafa;
+    }
+
+    .right-section {
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .left-section {
+        border-right: 1px solid #e5e7eb;
       }
     }
 
-    @media (max-width: 500px) {
-      .container {
-        padding: 12px;
+    @media (max-width: 767px) {
+      .left-section {
+        border-bottom: 1px solid #e5e7eb;
+        padding: 1.5rem;
       }
-      .header {
-        padding: 12px 16px;
+      .right-section {
+        padding: 1.5rem;
       }
-      .card {
-        border-radius: 8px;
+    }
+
+    @media (max-width: 576px) {
+      .payment-container {
+        padding: 1rem 0.5rem;
       }
-      .left-panel {
-        padding: 20px;
-        gap: 16px;
-      }
-      .merchant-avatar {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-      }
-      .merchant-info h3 {
-        font-size: 14px;
-      }
-      .quick-amounts {
-        gap: 6px;
-      }
-      .quick-btn {
-        padding: 8px;
-        font-size: 13px;
-      }
-      .amount-input-wrap {
-        padding: 14px;
-      }
-      .amount-input {
-        font-size: 28px;
-      }
-      .generate-btn {
-        padding: 12px;
-        font-size: 13px;
-      }
-      .right-panel {
-        padding: 20px 16px;
+      .left-section, .right-section {
+        padding: 1.25rem;
       }
       .khqr-card {
         width: 100%;
-        max-width: 240px;
-      }
-      .qr-code {
-        width: 150px;
-        height: 150px;
-      }
-      .khqr-body {
-        padding: 12px;
-      }
-      .qr-hint {
-        font-size: 10px;
+        max-width: 280px;
       }
     }
 
-    /* Left Panel */
-    .left-panel {
-      padding: 28px;
-      background: #fafafa;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    /* Left Section */
+    .left-section > * + * {
+      margin-top: 1.25rem;
     }
 
     .merchant {
@@ -280,15 +239,7 @@
       cursor: not-allowed;
     }
 
-    /* Right Panel */
-    .right-panel {
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
+    /* Right Section */
     .qr-header {
       display: flex;
       align-items: center;
@@ -472,77 +423,81 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="card">
-      <!-- Left -->
-      <div class="left-panel">
-        <div class="merchant">
-          <div class="merchant-avatar">S</div>
-          <div class="merchant-info">
-            <h3>SLKE MNAK EG</h3>
-            <p>Payment</p>
-          </div>
-        </div>
-
-        <div class="quick-amounts">
-          <button class="quick-btn" data-amount="1">$1</button>
-          <button class="quick-btn" data-amount="2">$2</button>
-          <button class="quick-btn" data-amount="5">$5</button>
-          <button class="quick-btn" data-amount="10">$10</button>
-          <button class="quick-btn" data-amount="20">$20</button>
-          <button class="quick-btn" data-amount="50">$50</button>
-        </div>
-
-        <div class="amount-input-wrap">
-          <div class="amount-label">Payment Amount</div>
-          <div class="amount-row">
-            <span class="currency-symbol">$</span>
-            <input type="number" id="amountInput" class="amount-input" placeholder="Type amount" min="0.01" step="0.01">
-            <span class="currency">USD</span>
-          </div>
-        </div>
-
-        <button id="generateBtn" class="generate-btn">Generate Payment QR</button>
-      </div>
-
-      <!-- Right -->
-      <div class="right-panel">
-        <div class="qr-header">
-          <button class="back-btn" id="backBtn">←</button>
-          <div class="bank-title">WING KHQR</div>
-          <div class="timer" id="timer">
-            <span class="timer-dot"></span>
-            <span id="timerText">04:55</span>
-          </div>
-        </div>
-
-        <div class="khqr-card">
-          <div class="khqr-header">
-            <svg width="50" height="12" viewBox="0 0 60 14" fill="none">
-              <path d="M39.006 5.19V9.6H34.53C34.07 9.6 33.73 9.23 33.73 8.81V5.22C33.73 4.77 34.1 4.43 34.53 4.43H38.17C38.66 4.4 39.006 4.74 39.006 5.19Z" fill="white"/>
-              <path d="M59.97 6.97H57.73C57.73 4.35 55.55 2.2 52.89 2.2C50.77 2.2 48.9 3.56 48.27 5.53C48.13 6.01 48.04 6.49 48.04 6.97V13.97H47.98C46.78 13.97 45.8 13.01 45.8 11.83V6.97H45.83C45.83 5.05 46.64 3.22 48.07 1.89C49.39 0.68 51.11 0 52.92 0C56.82 0 59.97 3.13 59.97 6.97Z" fill="white"/>
-              <path d="M60 13.97L56.85 14L56.07 13.24L54.35 11.54L51.97 9.2H55.12L60 13.97Z" fill="white"/>
-              <path d="M39.75 11.77H33.01C32.18 11.77 31.52 11.12 31.52 10.3V3.67C31.52 2.85 32.18 2.2 33.01 2.2H39.75C40.58 2.2 41.24 2.85 41.24 3.67V10.3L43.48 12.5V2.15C43.48 0.96 42.5 0 41.3 0H31.46C30.26 0 29.28 0.96 29.28 2.15V11.83C29.28 13.01 30.26 13.97 31.46 13.97H41.99L39.75 11.77Z" fill="white"/>
-              <path d="M12.36 14H9.21L2.61 7.48V14H0V0H2.61V6.24L8.95 0H12.05L5.16 6.72L12.36 14Z" fill="white"/>
-              <path d="M24.15 0H26.7V14H24.15V7.93H16.86V14H14.31V0H16.86V5.84H24.15V0Z" fill="white"/>
-            </svg>
-          </div>
-          <div class="khqr-triangle-wrap">
-            <div class="khqr-triangle"></div>
-          </div>
-          <div class="khqr-meta">
-            <div class="khqr-merchant">SLKE MNAK EG</div>
-            <div class="khqr-amount">
-              <span id="qrAmount">0.00</span> <span>USD</span>
+  <div class="payment-container">
+    <div class="payment-card">
+      <div class="row g-0">
+        <!-- Left Section -->
+        <div class="col-12 col-md-6 left-section">
+          <div class="merchant">
+            <div class="merchant-avatar">S</div>
+            <div class="merchant-info">
+              <h3>SLKE MNAK EG</h3>
+              <p>Payment</p>
             </div>
           </div>
-          <div class="khqr-body">
-            <img id="qrImage" class="qr-code" style="display: none;">
+
+          <div class="quick-amounts">
+            <button class="quick-btn" data-amount="1">$1</button>
+            <button class="quick-btn" data-amount="2">$2</button>
+            <button class="quick-btn" data-amount="5">$5</button>
+            <button class="quick-btn" data-amount="10">$10</button>
+            <button class="quick-btn" data-amount="20">$20</button>
+            <button class="quick-btn" data-amount="50">$50</button>
           </div>
+
+          <div class="amount-input-wrap">
+            <div class="amount-label">Payment Amount</div>
+            <div class="amount-row">
+              <span class="currency-symbol">$</span>
+              <input type="number" id="amountInput" class="amount-input" placeholder="Type amount" min="0.01" step="0.01">
+              <span class="currency">USD</span>
+            </div>
+          </div>
+
+          <button id="generateBtn" class="generate-btn">Generate Payment QR</button>
         </div>
 
-        <div class="qr-hint">Scan with KHQR compatible app</div>
-        <div id="paymentStatus" class="payment-status"></div>
+        <!-- Right Section -->
+        <div class="col-12 col-md-6 right-section">
+          <div class="w-100">
+            <div class="qr-header">
+              <button class="back-btn" id="backBtn">←</button>
+              <div class="bank-title">WING KHQR</div>
+              <div class="timer" id="timer">
+                <span class="timer-dot"></span>
+                <span id="timerText">04:55</span>
+              </div>
+            </div>
+
+            <div class="khqr-card mx-auto">
+              <div class="khqr-header">
+                <svg width="50" height="12" viewBox="0 0 60 14" fill="none">
+                  <path d="M39.006 5.19V9.6H34.53C34.07 9.6 33.73 9.23 33.73 8.81V5.22C33.73 4.77 34.1 4.43 34.53 4.43H38.17C38.66 4.4 39.006 4.74 39.006 5.19Z" fill="white"/>
+                  <path d="M59.97 6.97H57.73C57.73 4.35 55.55 2.2 52.89 2.2C50.77 2.2 48.9 3.56 48.27 5.53C48.13 6.01 48.04 6.49 48.04 6.97V13.97H47.98C46.78 13.97 45.8 13.01 45.8 11.83V6.97H45.83C45.83 5.05 46.64 3.22 48.07 1.89C49.39 0.68 51.11 0 52.92 0C56.82 0 59.97 3.13 59.97 6.97Z" fill="white"/>
+                  <path d="M60 13.97L56.85 14L56.07 13.24L54.35 11.54L51.97 9.2H55.12L60 13.97Z" fill="white"/>
+                  <path d="M39.75 11.77H33.01C32.18 11.77 31.52 11.12 31.52 10.3V3.67C31.52 2.85 32.18 2.2 33.01 2.2H39.75C40.58 2.2 41.24 2.85 41.24 3.67V10.3L43.48 12.5V2.15C43.48 0.96 42.5 0 41.3 0H31.46C30.26 0 29.28 0.96 29.28 2.15V11.83C29.28 13.01 30.26 13.97 31.46 13.97H41.99L39.75 11.77Z" fill="white"/>
+                  <path d="M12.36 14H9.21L2.61 7.48V14H0V0H2.61V6.24L8.95 0H12.05L5.16 6.72L12.36 14Z" fill="white"/>
+                  <path d="M24.15 0H26.7V14H24.15V7.93H16.86V14H14.31V0H16.86V5.84H24.15V0Z" fill="white"/>
+                </svg>
+              </div>
+              <div class="khqr-triangle-wrap">
+                <div class="khqr-triangle"></div>
+              </div>
+              <div class="khqr-meta">
+                <div class="khqr-merchant">SLKE MNAK EG</div>
+                <div class="khqr-amount">
+                  <span id="qrAmount">0.00</span> <span>USD</span>
+                </div>
+              </div>
+              <div class="khqr-body">
+                <img id="qrImage" class="qr-code" style="display: none;">
+              </div>
+            </div>
+
+            <div class="qr-hint">Scan with KHQR compatible app</div>
+            <div id="paymentStatus" class="payment-status mx-auto"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
