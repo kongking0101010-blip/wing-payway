@@ -103,6 +103,84 @@
       margin-top: 1.25rem;
     }
 
+    /* Telegram Form */
+    .telegram-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input {
+      padding: 10px 12px;
+      background: white;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1f2937;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #22c55e;
+    }
+
+    .form-input::placeholder {
+      color: #d1d5db;
+    }
+
+    .username-input-wrap {
+      display: flex;
+      align-items: center;
+      background: white;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 10px 12px;
+      transition: all 0.15s;
+    }
+
+    .username-input-wrap:focus-within {
+      border-color: #22c55e;
+    }
+
+    .username-prefix {
+      font-size: 14px;
+      font-weight: 600;
+      color: #9ca3af;
+      margin-right: 4px;
+    }
+
+    .form-input-username {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1f2937;
+      font-family: inherit;
+      background: transparent;
+    }
+
+    .form-input-username::placeholder {
+      color: #d1d5db;
+    }
+
     .merchant {
       display: flex;
       align-items: center;
@@ -413,6 +491,137 @@
       color: #9ca3af;
       font-size: 11px;
     }
+
+    /* Receipt Section */
+    .receipt-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .receipt-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      max-width: 320px;
+      width: 100%;
+    }
+
+    .receipt-header {
+      background: linear-gradient(135deg, #10b981, #059669);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: white;
+    }
+
+    .receipt-icon {
+      width: 64px;
+      height: 64px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 12px;
+      font-weight: 700;
+    }
+
+    .receipt-header h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .receipt-header p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .receipt-body {
+      padding: 1.5rem;
+      background: white;
+    }
+
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .receipt-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    .receipt-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1f2937;
+      text-align: right;
+    }
+
+    .receipt-divider {
+      height: 1px;
+      background: #e5e7eb;
+      margin: 12px 0;
+    }
+
+    .receipt-total {
+      padding: 12px 0;
+    }
+
+    .receipt-total .receipt-label {
+      font-size: 13px;
+      color: #374151;
+    }
+
+    .receipt-total .receipt-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: #10b981;
+    }
+
+    .receipt-footer {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed #e5e7eb;
+      text-align: center;
+    }
+
+    .receipt-date {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .receipt-ref {
+      font-size: 10px;
+      color: #d1d5db;
+      font-weight: 600;
+    }
+
+    .new-payment-btn {
+      width: 100%;
+      padding: 14px;
+      background: #f3f4f6;
+      color: #374151;
+      border: none;
+      border-top: 1px solid #e5e7eb;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+
+    .new-payment-btn:hover {
+      background: #e5e7eb;
+    }
   </style>
 </head>
 <body>
@@ -433,6 +642,21 @@
             <div class="merchant-info">
               <h3>SLKE MNAK EG</h3>
               <p>Payment</p>
+            </div>
+          </div>
+
+          <!-- Telegram Info Form -->
+          <div class="telegram-form">
+            <div class="form-group">
+              <label class="form-label">Telegram Name</label>
+              <input type="text" id="telegramName" class="form-input" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telegram Username</label>
+              <div class="username-input-wrap">
+                <span class="username-prefix">@</span>
+                <input type="text" id="telegramUsername" class="form-input-username" placeholder="username">
+              </div>
             </div>
           </div>
 
@@ -459,7 +683,7 @@
 
         <!-- Right Section -->
         <div class="col-12 col-md-6 right-section">
-          <div class="w-100">
+          <div class="w-100" id="qrSection">
             <div class="qr-header">
               <button class="back-btn" id="backBtn">←</button>
               <div class="bank-title">WING KHQR</div>
@@ -497,6 +721,37 @@
             <div class="qr-hint">Scan with KHQR compatible app</div>
             <div id="paymentStatus" class="payment-status mx-auto"></div>
           </div>
+
+          <!-- Receipt Section (Hidden Initially) -->
+          <div class="receipt-section" id="receiptSection" style="display: none;">
+            <div class="receipt-card mx-auto">
+              <div class="receipt-header">
+                <div class="receipt-icon">✓</div>
+                <h3>Payment Successful</h3>
+                <p>Your payment has been received</p>
+              </div>
+              <div class="receipt-body">
+                <div class="receipt-row">
+                  <span class="receipt-label">Name</span>
+                  <span class="receipt-value" id="receiptName">-</span>
+                </div>
+                <div class="receipt-row">
+                  <span class="receipt-label">Telegram</span>
+                  <span class="receipt-value" id="receiptTelegram">-</span>
+                </div>
+                <div class="receipt-divider"></div>
+                <div class="receipt-row receipt-total">
+                  <span class="receipt-label">Amount Paid</span>
+                  <span class="receipt-value" id="receiptAmount">$0.00</span>
+                </div>
+                <div class="receipt-footer">
+                  <div class="receipt-date" id="receiptDate">-</div>
+                  <div class="receipt-ref">Ref: <span id="receiptRef">-</span></div>
+                </div>
+              </div>
+              <button class="new-payment-btn" id="newPaymentBtn">New Payment</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -513,6 +768,7 @@
     let pollInterval = null;
     let timerInterval = null;
     let timeLeft = 295;
+    let paymentData = {};
 
     document.querySelectorAll('.quick-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -526,10 +782,34 @@
 
     document.getElementById('generateBtn').addEventListener('click', async () => {
       const amount = parseFloat(document.getElementById('amountInput').value);
-      if (!amount || amount <= 0) {
-        alert('Please enter a valid amount');
+      const telegramName = document.getElementById('telegramName').value.trim();
+      const telegramUsername = document.getElementById('telegramUsername').value.trim();
+
+      // Validation
+      if (!telegramName) {
+        alert('Please enter your Telegram name');
+        document.getElementById('telegramName').focus();
         return;
       }
+
+      if (!telegramUsername) {
+        alert('Please enter your Telegram username');
+        document.getElementById('telegramUsername').focus();
+        return;
+      }
+
+      if (!amount || amount <= 0) {
+        alert('Please enter a valid amount');
+        document.getElementById('amountInput').focus();
+        return;
+      }
+
+      // Store payment data
+      paymentData = {
+        name: telegramName,
+        username: telegramUsername,
+        amount: amount
+      };
 
       const btn = document.getElementById('generateBtn');
       btn.disabled = true;
@@ -572,6 +852,25 @@
     });
 
     document.getElementById('backBtn').addEventListener('click', () => {
+      resetPayment();
+    });
+
+    document.getElementById('newPaymentBtn').addEventListener('click', () => {
+      // Reset form
+      document.getElementById('telegramName').value = '';
+      document.getElementById('telegramUsername').value = '';
+      document.getElementById('amountInput').value = '';
+      document.getElementById('qrAmount').textContent = '0.00';
+      document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
+      
+      // Show QR section, hide receipt
+      document.getElementById('qrSection').style.display = 'block';
+      document.getElementById('receiptSection').style.display = 'none';
+      
+      resetPayment();
+    });
+
+    function resetPayment() {
       if (pollInterval) clearInterval(pollInterval);
       if (timerInterval) clearInterval(timerInterval);
       document.getElementById('qrImage').style.display = 'none';
@@ -579,7 +878,8 @@
       document.getElementById('timer').style.visibility = 'hidden';
       document.getElementById('backBtn').style.visibility = 'hidden';
       timeLeft = 295;
-    });
+      currentMd5 = null;
+    }
 
     function startTimer() {
       if (timerInterval) clearInterval(timerInterval);
@@ -606,12 +906,39 @@
           if (d.status === 'PAID') {
             clearInterval(pollInterval);
             clearInterval(timerInterval);
-            statusEl.className = 'payment-status success show';
-            statusEl.innerHTML = `✅ Payment Received<br>${d.amount} ${d.currency || 'USD'}`;
+            showReceipt(d);
           }
         } catch (_) {}
         if (timeLeft <= 0) clearInterval(pollInterval);
       }, 3000);
+    }
+
+    function showReceipt(paymentResponse) {
+      // Hide QR section
+      document.getElementById('qrSection').style.display = 'none';
+      
+      // Show receipt section
+      const receiptSection = document.getElementById('receiptSection');
+      receiptSection.style.display = 'block';
+      
+      // Populate receipt data
+      document.getElementById('receiptName').textContent = paymentData.name;
+      document.getElementById('receiptTelegram').textContent = '@' + paymentData.username;
+      document.getElementById('receiptAmount').textContent = '$' + parseFloat(paymentResponse.amount || paymentData.amount).toFixed(2);
+      
+      // Set date
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      document.getElementById('receiptDate').textContent = dateStr;
+      
+      // Set reference number (use md5 substring)
+      document.getElementById('receiptRef').textContent = currentMd5.substring(0, 12).toUpperCase();
     }
 
     document.getElementById('amountInput').addEventListener('input', (e) => {
